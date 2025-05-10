@@ -8,7 +8,7 @@ import os
 
 # Load environment variables
 load_dotenv()
-OPENAI_API_KEY="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"
+OPENAI_API_KEY=""
 # Initialize the LLM
 llm = ChatOpenAI(
     model="gpt-4o",
