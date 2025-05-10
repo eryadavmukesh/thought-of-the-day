@@ -1,7 +1,8 @@
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import JsonOutputParser
 from langchain.memory import ConversationBufferMemory
-from src.prompts import get_thought_prompt
+from prompts.thought_prompt import get_thought_prompt
+from src.prompts.thought_prompt import ThoughtPromptTemplate
 from dotenv import load_dotenv
 import json
 import os
@@ -20,8 +21,11 @@ class ThoughtGenerator:
             return_messages=True,
             memory_key="chat_history"
         )
+
+        self.prompt = ThoughtPromptTemplate().get_thought_prompt()
         self.parser = JsonOutputParser()
-        self.chain = get_thought_prompt() | self.llm | self.parser
+        
+        self.chain = self.prompt | self.llm | self.parser
 
     def get_thought(self, theme=""):
         try:
