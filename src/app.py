@@ -1,4 +1,4 @@
-from src.thought_generator import ThoughtGenerator
+from utils.thought_generator import ThoughtGenerator
 import json
 
 def main():
