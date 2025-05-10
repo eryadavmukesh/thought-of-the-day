@@ -20,7 +20,7 @@ The following diagram illustrates the workflow of the "Thought of the Day" appli
 
 ```mermaid
 graph TD
-    A[User Input: Theme or Empty] -->|main.py| B[ThoughtGenerator]
+    A[User Input: Theme or Empty] -->|app.py| B[ThoughtGenerator]
     B -->|Instantiates| C[ThoughtPromptTemplate]
     C -->|get_thought_prompt| D[ChatPromptTemplate]
     B -->|Loads| E[ConversationBufferMemory]

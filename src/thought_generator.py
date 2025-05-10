@@ -24,12 +24,14 @@ class ThoughtGenerator:
 
         self.prompt = ThoughtPromptTemplate().get_thought_prompt()
         self.parser = JsonOutputParser()
-        
+
+        # Create a chain pipeline
         self.chain = self.prompt | self.llm | self.parser
 
     def get_thought(self, theme=""):
         try:
             memory_context = self.memory.load_memory_variables({})
+            
             result = self.chain.invoke({
                 "theme": theme or "random",
                 "chat_history": memory_context["chat_history"]
