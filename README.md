@@ -7,7 +7,7 @@ A LangChain application to generate inspirational thoughts.
 1. Install dependencies: `pip install -r requirements.txt`
 2. Create a `.env` file with `OPENAI_API_KEY`.
 3. Run: `python src/main.py`
-4. Run tests: `pytest tests/`
+4. Run the Streamlit UI: streamlit run src/ui.py
 
 ## Project Structure
 
@@ -20,13 +20,13 @@ The following diagram illustrates the workflow of the "Thought of the Day" appli
 
 ```mermaid
 graph TD
-    A[User Input: Theme or Empty] -->|app.py| B[ThoughtGenerator]
+    A[User Input: Theme or Empty] -->|app.py or ui.py| B[ThoughtGenerator]
     B -->|Instantiates| C[ThoughtPromptTemplate]
     C -->|get_thought_prompt| D[ChatPromptTemplate]
     B -->|Loads| E[ConversationBufferMemory]
     E -->|Provides chat_history| F[Chain: Prompt + LLM + Parser]
     D -->|System + Human + History| F
     F -->|Calls OpenAI GPT-4o| G[Generate Thought]
-    G -->|Returns JSON| H["Output: {thought, theme}"]
+    G -->|Returns JSON| H["Output: {{thought, theme}}"]
     H -->|Saves to Memory| E
-    H -->|Prints| I[Console Output]
+    H -->|Prints| I[Console or Streamlit UI]
