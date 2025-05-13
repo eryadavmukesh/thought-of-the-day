@@ -15,7 +15,9 @@ st.write("Enter a theme (e.g., motivation, peace) or leave blank for a random th
 
 # Input form
 with st.form(key="thought_form"):
-    theme = st.text_input("Theme (optional):", placeholder="e.g., motivation, peace, happiness")
+    theme = st.text_input(
+        "Theme (optional):", placeholder="e.g., motivation, peace, happiness"
+    )
     submit_button = st.form_submit_button(label="Generate Thought")
 
 # Handle form submission
@@ -34,5 +36,5 @@ if submit_button:
                 **Thought**: {result['thought']}  
                 **Theme**: {result['theme']}
                 """,
-                unsafe_allow_html=True
+                unsafe_allow_html=True,
             )

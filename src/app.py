@@ -1,6 +1,7 @@
 from utils.thought_generator import ThoughtGenerator
 import json
 
+
 def main():
     print("Welcome to Thought of the Day!")
     generator = ThoughtGenerator()
@@ -19,6 +20,7 @@ def main():
     print("\nGenerating thought for theme: 'peace'")
     result3 = generator.get_thought("peace")
     print(json.dumps(result3, indent=2))
+
 
 if __name__ == "__main__":
     main()

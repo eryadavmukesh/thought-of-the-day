@@ -1,5 +1,6 @@
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-  
+
+
 class ThoughtPromptTemplate:
     def __init__(self):
         self.system_template = """
@@ -23,11 +24,12 @@ class ThoughtPromptTemplate:
         Ensure the thought is unique compared to previous thoughts in the conversation history.
         Return the output as a JSON object with two fields: 'thought' and 'theme' fields.
         """
-    
+
     def get_thought_prompt(self):
-      return ChatPromptTemplate.from_messages([
-          ("system", self.system_template),
-          MessagesPlaceholder(variable_name="chat_history"),
-          ("human", self.human_template)
-      ])
-    
+        return ChatPromptTemplate.from_messages(
+            [
+                ("system", self.system_template),
+                MessagesPlaceholder(variable_name="chat_history"),
+                ("human", self.human_template),
+            ]
+        )
