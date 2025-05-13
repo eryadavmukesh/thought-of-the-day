@@ -1,4 +1,5 @@
 from langchain_openai import ChatOpenAI
+from langchain_openai import AzureChatOpenAI
 from langchain_core.output_parsers import JsonOutputParser
 from langchain.memory import ConversationBufferMemory
 from prompts.thought_prompt import ThoughtPromptTemplate
@@ -16,7 +17,7 @@ OPENAI_API_VERSION = os.getenv("AZURE_OPENAI_VERSION")
 
 class ThoughtGenerator:
     def __init__(self):
-        self.llm = ChatOpenAI(
+        self.llm = AzureChatOpenAI(
             openai_api_key=OPENAI_API_KEY,
             azure_endpoint=OPENAI_API_ENDPOINT,
             deployment_name=OPENAI_API_DEPLOYMENT_NAME,
